@@ -3,6 +3,7 @@ package com.example.cotizadorapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner spinner;
+    String nombreCategoria = "";
+    String[] nombreSubPaquetes = new String[3];
+    int[] preciosSubPaquetes = new int[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +36,41 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-
-        int precio = 0;
-        String nombreCategoria;
-        String nombrePaquete;
-
         switch (pos){
             case 0:
+                this.nombreCategoria = "Cloud hosting";
+
+                this.nombreSubPaquetes[0] = "Cloud startup";
+                this.nombreSubPaquetes[1] = "Cloud Profesional";
+                this.nombreSubPaquetes[2] = "Cloud Empresa";
+
+                this.preciosSubPaquetes[0] = 200;
+                this.preciosSubPaquetes[1] = 215;
+                this.preciosSubPaquetes[2] = 300;
 
                 break;
             case 1:
+                this.nombreCategoria = "VPS Hosting";
+
+                this.nombreSubPaquetes[0] = "VPS 1";
+                this.nombreSubPaquetes[1] = "VPS 2";
+                this.nombreSubPaquetes[2] = "VPS 3";
+
+                this.preciosSubPaquetes[0] = 150;
+                this.preciosSubPaquetes[1] = 200;
+                this.preciosSubPaquetes[2] = 225;
 
                 break;
             case 2:
-                break;
+                this.nombreCategoria = "WordPress Hosting";
 
-            case 3:
+                this.nombreSubPaquetes[0] = "W Starter";
+                this.nombreSubPaquetes[1] = "W Bussines";
+                this.nombreSubPaquetes[2] = "W Pro";
+
+                this.preciosSubPaquetes[0] = 150;
+                this.preciosSubPaquetes[1] = 175;
+                this.preciosSubPaquetes[2] = 200;
                 break;
         }
     }
@@ -55,8 +78,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+    public void pasaValoresSigVista(View view){
+        Intent i = new Intent(this,SubPaquetesControlador.class);
+        i.putExtra("nombreCategoria",nombreCategoria);
+        i.putExtra("nombresSubPaquetes", nombreSubPaquetes);
+        i.putExtra("preciosSubPaquetes", preciosSubPaquetes);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
     public void finalizarApp(View vista){
-        finish();
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 }
 
