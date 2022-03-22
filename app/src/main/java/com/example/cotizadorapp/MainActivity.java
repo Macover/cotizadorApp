@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         i.putExtra("nombreCategoria",nombreCategoria);
         i.putExtra("nombresSubPaquetes", nombreSubPaquetes);
         i.putExtra("preciosSubPaquetes", preciosSubPaquetes);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
     public void finalizarApp(View vista){

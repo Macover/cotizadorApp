@@ -14,6 +14,10 @@ public class SubPaquetesControlador extends Activity {
     TextView tituloCategoria;
     RadioButton opcion1, opcion2, opcion3;
 
+    String nombreCategoria;
+    String[] nombresSubPaquetes;
+    int[] preciosSubPaquetes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,9 +25,9 @@ public class SubPaquetesControlador extends Activity {
 
         Bundle datos = getIntent().getExtras();
 
-        String nombreCategoria = datos.getString("nombreCategoria");
-        String[] nombresSubPaquetes = datos.getStringArray("nombresSubPaquetes");
-        int[] preciosSubPaquetes = datos.getIntArray("preciosSubPaquetes");
+        nombreCategoria = datos.getString("nombreCategoria");
+        nombresSubPaquetes = datos.getStringArray("nombresSubPaquetes");
+        preciosSubPaquetes = datos.getIntArray("preciosSubPaquetes");
 
         tituloCategoria = (TextView) findViewById(R.id.txtNombreCategoria);
 
@@ -38,6 +42,25 @@ public class SubPaquetesControlador extends Activity {
     }
     public void eligeOtraCategoria(View view){
         Intent i = new Intent(this,MainActivity.class);
+        startActivity(i);
+    }
+    public void continuaSubPaqueteSeleccionado(View view){
+
+        Intent i = new Intent(this, calculaTotalResumen.class);
+        i.putExtra("nombreCategoria", this.nombreCategoria);
+
+        if(opcion1.isChecked()){
+            i.putExtra("nombreSubPaquete", nombresSubPaquetes[0]);
+            i.putExtra("precioSubPaquete", preciosSubPaquetes[0]);
+        }
+        if(opcion2.isChecked()){
+            i.putExtra("nombreSubPaquete", nombresSubPaquetes[1]);
+            i.putExtra("precioSubPaquete", preciosSubPaquetes[1]);
+        }
+        if(opcion3.isChecked()){
+            i.putExtra("nombreSubPaquete", nombresSubPaquetes[2]);
+            i.putExtra("precioSubPaquete", preciosSubPaquetes[2]);
+        }
         startActivity(i);
     }
 }

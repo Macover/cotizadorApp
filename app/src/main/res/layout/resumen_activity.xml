@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingRight="30dp"
+    android:paddingLeft="30dp"
+    tools:context=".calculaTotalResumen"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tituloPaqueteFinal"
+            style="@style/customTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paquete" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="3">
+
+        <TextView
+            android:id="@+id/resumenString"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="sdbfhsdb sdfjsndk
+dfsjdfb sdfsndg sdknfsjdg sdknfsd sdkngsld sdfsdf
+sdfsdf sdfsdf sdfsd sdfdsf sdfsd adbf sdfsd sdgsd sdgs sdg sdfsg sdgsdg
+sdgsdg sdgsdg sdgsgsd gsdgs sgdsgds sdgs sdgsdg sdgs sdgs sdgsdg
+sdgsdgs sdgsdg sdgsdg sdgsdg" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="30dp"
+        android:layout_weight="1">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:layout_weight="5"
+            android:text="Agregar 1 mes extra por $150."/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Aceptar" />
+    </LinearLayout>
+
+</LinearLayout>

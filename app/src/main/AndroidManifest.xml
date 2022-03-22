@@ -19,13 +19,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SubPaquetesControlador"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+            android:name=".SubPaquetesControlador">
         </activity>
+        <activity android:name=".calculaTotalResumen"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
