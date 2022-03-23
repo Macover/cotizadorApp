@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(i);
     }
     public void finalizarApp(View vista){
-        android.os.Process.killProcess(android.os.Process.myPid());
+        finishAffinity();
     }
 }
 
