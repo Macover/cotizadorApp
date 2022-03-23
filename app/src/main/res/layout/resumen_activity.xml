@@ -66,12 +66,13 @@ sdgsdgs sdgsdg sdgsdg sdgsdg"
             android:text="Agregar 1 mes extra por $150."/>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnAceptarResumen"
             style="@style/customButtonPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:onClick="msjAceptado"
             android:text="Aceptar" />
     </LinearLayout>
 

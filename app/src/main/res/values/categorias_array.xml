@@ -4,5 +4,8 @@
         <item>Cloud Hosting</item>
         <item>Vps Hosting</item>
         <item>WordPress Hosting</item>
+        <item>Domain</item>
+        <item>Email hosting</item>
+        <item>Servidor dedicado</item>
     </string-array>
 </resources>

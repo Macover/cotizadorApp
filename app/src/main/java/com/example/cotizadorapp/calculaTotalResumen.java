@@ -3,8 +3,10 @@ package com.example.cotizadorapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class calculaTotalResumen extends Activity {
 
@@ -67,6 +69,17 @@ public class calculaTotalResumen extends Activity {
                     "IVA: $"+iva+ "\n"+
                     "Total: $"+total;
         }
+        //finish afinaty
         resumenStringVista.setText(resumenString);
+
+
+    }
+    public void msjAceptado(View view){
+
+        Button btnVistaPrincipal;
+
+        //agregar boton de ir a la principal.
+
+        Toast.makeText(getApplicationContext(), "El paquete fue seleccionado correctamente", Toast.LENGTH_SHORT).show();
     }
 }

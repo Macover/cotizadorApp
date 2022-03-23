@@ -72,6 +72,36 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 this.preciosSubPaquetes[1] = 175;
                 this.preciosSubPaquetes[2] = 200;
                 break;
+            case 3:
+                this.nombreCategoria = "Dominio";
+                this.nombreSubPaquetes[0] = ".com";
+                this.nombreSubPaquetes[1] = ".net";
+                this.nombreSubPaquetes[2] = ".info";
+
+                this.preciosSubPaquetes[0] = 315;
+                this.preciosSubPaquetes[1] = 250;
+                this.preciosSubPaquetes[2] = 100;
+                break;
+            case 4:
+                this.nombreCategoria = "Email";
+                this.nombreSubPaquetes[0] = "Email de empresa";
+                this.nombreSubPaquetes[1] = "Email de negocios";
+                this.nombreSubPaquetes[2] = "no definido";
+
+                this.preciosSubPaquetes[0] = 700;
+                this.preciosSubPaquetes[1] = 450;
+                this.preciosSubPaquetes[2] = 0;
+                break;
+            case 5:
+                this.nombreCategoria = "Servidor dedicado";
+                this.nombreSubPaquetes[0] = "Liviano";
+                this.nombreSubPaquetes[1] = "Normal";
+                this.nombreSubPaquetes[2] = "Rendimiento";
+
+                this.preciosSubPaquetes[0] = 1500;
+                this.preciosSubPaquetes[1] = 1800;
+                this.preciosSubPaquetes[2] = 2200;
+                break;
         }
     }
     @Override
