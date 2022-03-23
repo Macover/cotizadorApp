@@ -29,18 +29,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_weight="3">
 
         <TextView
             android:id="@+id/resumenString"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
             android:text="sdbfhsdb sdfjsndk
 dfsjdfb sdfsndg sdknfsjdg sdknfsd sdkngsld sdfsdf
 sdfsdf sdfsdf sdfsd sdfdsf sdfsd adbf sdfsd sdgsd sdgs sdg sdfsg sdgsdg
-sdgsdg sdgsdg sdgsgsd gsdgs sgdsgds sdgs sdgsdg sdgs sdgs sdgsdg
-sdgsdgs sdgsdg sdgsdg sdgsdg" />
+sdgsdg sdgsdg sdgsgsd gsdgs sgdsgds sdgs sdgsdg sdgs sdg    s sdgsdg
+sdgsdgs sdgsdg sdgsdg sdgsdg"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -52,14 +56,18 @@ sdgsdgs sdgsdg sdgsdg sdgsdg" />
         android:layout_weight="1">
 
         <CheckBox
-            android:layout_width="wrap_content"
+            android:id="@+id/paqueteCkB"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary"
             android:layout_weight="5"
+            android:textColorHint="@color/primary"
+            android:textSize="15dp"
+            android:onClick="onClickCheckBox"
             android:text="Agregar 1 mes extra por $150."/>
 
         <Button
             android:id="@+id/button2"
+            style="@style/customButtonPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
