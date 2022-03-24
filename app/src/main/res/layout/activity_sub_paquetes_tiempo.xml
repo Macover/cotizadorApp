@@ -52,7 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Elegir otra categoria" />
+            android:text="Elegir otra categoria"
+            android:onClick="eligeOtraCategoria"/>
 
         <Space
             android:layout_width="50dp"
@@ -64,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+
             android:text="Continuar" />
     </LinearLayout>
 </LinearLayout>

@@ -36,9 +36,9 @@ public class SubPaquetesControlador extends Activity {
         opcion3 = (RadioButton) findViewById(R.id.rbOpcion3);
 
         tituloCategoria.setText(nombreCategoria);
-        opcion1.setText(nombresSubPaquetes[0] + " -> $" + preciosSubPaquetes[0]);
-        opcion2.setText(nombresSubPaquetes[1] + " -> $" + preciosSubPaquetes[1]);
-        opcion3.setText(nombresSubPaquetes[2] + " -> $" + preciosSubPaquetes[2]);
+        opcion1.setText(nombresSubPaquetes[0]);
+        opcion2.setText(nombresSubPaquetes[1]);
+        opcion3.setText(nombresSubPaquetes[2]);
     }
     public void eligeOtraCategoria(View view){
         Intent i = new Intent(this,MainActivity.class);
