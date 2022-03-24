@@ -44,6 +44,10 @@ public class SubPaquetesControlador extends Activity {
         Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }
+    public void continuaTiempoSeleccion(View view){
+        Intent i = new Intent(this, subPaquetesTiempo.class);
+        startActivity(i);
+    }
     public void continuaSubPaqueteSeleccionado(View view){
 
         Intent i = new Intent(this, calculaTotalResumen.class);
