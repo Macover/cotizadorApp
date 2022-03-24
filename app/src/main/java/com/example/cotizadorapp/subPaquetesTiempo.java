@@ -19,6 +19,10 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
 
     String subPaqueteSeleccionado;
     float precioSeleccionado;
+    String tiempoPaquete;
+
+    String nombreSubPaquete;
+    int precioSubPaquete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,13 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
         nombresSubPaquetes = datos.getStringArray("nombresSubPaquetes");
         preciosSubPaquetes = datos.getIntArray("preciosSubPaquetes");
 
+        nombreSubPaquete = datos.getString("nombreSubPaquete");
+        precioSubPaquete = datos.getInt("precioSubPaquete");
+
         subPaquetesTiempoPrecios = new float[3];
-        subPaquetesTiempoPrecios[0] = (float) (preciosSubPaquetes[0] * .25) + preciosSubPaquetes[0];
-        subPaquetesTiempoPrecios[1] = (float) (preciosSubPaquetes[1] * .30) + preciosSubPaquetes[1];
-        subPaquetesTiempoPrecios[2] = (float) (preciosSubPaquetes[2] * .35) + preciosSubPaquetes[2];
+        subPaquetesTiempoPrecios[0] = (float) (precioSubPaquete * .25) + precioSubPaquete;
+        subPaquetesTiempoPrecios[1] = (float) (precioSubPaquete * .30) + precioSubPaquete;
+        subPaquetesTiempoPrecios[2] = (float) (precioSubPaquete * .35) + precioSubPaquete;
 
         String[] paquetesTiempo = { "$"+subPaquetesTiempoPrecios[0]+" por un mes",
                 "$"+subPaquetesTiempoPrecios[1]+" por dos meses",
@@ -45,16 +52,20 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTiempo.setAdapter(adapter);
     }
-    public void eligeOtraCategoria(View view){
-        Intent i = new Intent(this,MainActivity.class);
+    public void eligeOtroPaquete(View view){
+        Intent i = new Intent(this,SubPaquetesControlador.class);
+        i.putExtra("nombreCategoria",nombreCategoria);
+        i.putExtra("nombresSubPaquetes", nombresSubPaquetes);
+        i.putExtra("preciosSubPaquetes", preciosSubPaquetes);
         startActivity(i);
     }
-    public void continuaSubPaqueteSeleccionado(View view){
+    public void continuaSubPaqueteTiempoSeleccionado(View view){
 
         Intent i = new Intent(this, calculaTotalResumen.class);
-        i.putExtra("nombreCategoria", this.nombreCategoria);
+        i.putExtra("nombreCategoria", nombreCategoria);
         i.putExtra("nombreSubPaquete", subPaqueteSeleccionado);
         i.putExtra("precioSubPaquete", precioSeleccionado);
+        i.putExtra("tiempoPaquete", tiempoPaquete);
         startActivity(i);
     }
 
@@ -62,14 +73,17 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
         switch (pos){
             case 0:
+                tiempoPaquete = "1 mes";
                 subPaqueteSeleccionado = nombresSubPaquetes[0];
                 precioSeleccionado = subPaquetesTiempoPrecios[0];
                 break;
             case 1:
+                tiempoPaquete = "2 meses";
                 subPaqueteSeleccionado = nombresSubPaquetes[1];
                 precioSeleccionado = subPaquetesTiempoPrecios[1];
                 break;
             case 2:
+                tiempoPaquete = "3 meses";
                 subPaqueteSeleccionado = nombresSubPaquetes[2];
                 precioSeleccionado = subPaquetesTiempoPrecios[2];
                 break;

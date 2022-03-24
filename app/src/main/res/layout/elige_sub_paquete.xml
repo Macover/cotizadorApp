@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:onClick="continuaTiempoSeleccion"
+            android:onClick="continuaSubPaqueteSeleccionado"
             android:text="Continuar" />
     </LinearLayout>
 

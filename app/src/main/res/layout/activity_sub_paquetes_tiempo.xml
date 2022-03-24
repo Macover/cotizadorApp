@@ -20,7 +20,7 @@
             style="@style/customTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sub Paquete tiempo" />
+            android:text="¿Por cuanto tiempo?" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,8 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Elegir otra categoria"
-            android:onClick="eligeOtraCategoria"/>
+            android:onClick="eligeOtroPaquete"
+            android:text="Elegir otro paquete" />
 
         <Space
             android:layout_width="50dp"
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-
+            android:onClick="continuaSubPaqueteTiempoSeleccionado"
             android:text="Continuar" />
     </LinearLayout>
 </LinearLayout>

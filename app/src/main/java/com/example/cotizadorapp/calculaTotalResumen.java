@@ -28,6 +28,7 @@ public class calculaTotalResumen extends Activity {
 
         String nombreCategoria = datos.getString("nombreCategoria");
         String nombreSubCategoria = datos.getString("nombreSubPaquete");
+        String tiempoPaquete = datos.getString("tiempoPaquete");
         int precioSubPaquete = datos.getInt("precioSubPaquete");
 
         iva = (float) (precioSubPaquete * 0.16);
@@ -36,6 +37,7 @@ public class calculaTotalResumen extends Activity {
         resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
                 "Nombre del paquete seleccionado: " + nombreSubCategoria+ "\n"+
                 "Precio del paquete: $"+precioSubPaquete+ "\n"+
+                "Duración: "+tiempoPaquete+ "\n"+
                 "IVA: $"+iva+ "\n"+
                 "Total: $"+total;
 

@@ -36,21 +36,24 @@ public class SubPaquetesControlador extends Activity {
         opcion3 = (RadioButton) findViewById(R.id.rbOpcion3);
 
         tituloCategoria.setText(nombreCategoria);
-        opcion1.setText(nombresSubPaquetes[0]);
-        opcion2.setText(nombresSubPaquetes[1]);
-        opcion3.setText(nombresSubPaquetes[2]);
+        opcion1.setText(nombresSubPaquetes[0] + "$" +preciosSubPaquetes[0]);
+        opcion2.setText(nombresSubPaquetes[1] + "$" +preciosSubPaquetes[1]);
+        opcion3.setText(nombresSubPaquetes[2] + "$" +preciosSubPaquetes[2]);
     }
     public void eligeOtraCategoria(View view){
         Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }
     public void continuaTiempoSeleccion(View view){
-        Intent i = new Intent(this, subPaquetesTiempo.class);
+        Intent i = new Intent(this,subPaquetesTiempo.class);
+        i.putExtra("nombreCategoria",nombreCategoria);
+        i.putExtra("nombresSubPaquetes", nombresSubPaquetes);
+        i.putExtra("preciosSubPaquetes", preciosSubPaquetes);
         startActivity(i);
     }
     public void continuaSubPaqueteSeleccionado(View view){
 
-        Intent i = new Intent(this, calculaTotalResumen.class);
+        Intent i = new Intent(this, subPaquetesTiempo.class);
         i.putExtra("nombreCategoria", this.nombreCategoria);
 
         if(opcion1.isChecked()){
