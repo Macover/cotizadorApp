@@ -93,6 +93,7 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
         i.putExtra("nombreSubPaquete", nombreSubPaquete);
         i.putExtra("precioSubPaquete", precioSeleccionado);
         i.putExtra("tiempoPaquete", tiempoPaquete);
+        finish();
         startActivity(i);
     }
 }

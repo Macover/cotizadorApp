@@ -77,22 +77,22 @@ sdgsdgs sdgsdg sdgsdg sdgsdg"
                 style="@style/customButtonSecondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:onClick="otraCotizacion"
                 android:text="Hacer otra cotización" />
 
             <Space
-                android:layout_width="20dp"
+                android:layout_width="10dp"
                 android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btnFinalizarApp"
                 style="@style/customButtonPrimary"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1.5"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
                 android:onClick="finalizarApp"
                 android:text="Salir" />
 

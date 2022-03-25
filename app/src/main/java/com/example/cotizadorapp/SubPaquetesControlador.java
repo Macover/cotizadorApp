@@ -69,7 +69,7 @@ public class SubPaquetesControlador extends AppCompatActivity {
 
         i.putExtra("nombresSubPaquetes", nombresSubPaquetes);
         i.putExtra("preciosSubPaquetes", preciosSubPaquetes);
-
+        finish();
         startActivity(i);
     }
 }
