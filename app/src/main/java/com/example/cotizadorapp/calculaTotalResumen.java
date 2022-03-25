@@ -1,6 +1,7 @@
 package com.example.cotizadorapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,10 @@ public class calculaTotalResumen extends AppCompatActivity {
         iva = (float) (precioSubPaquete * 0.16);
         total = precioSubPaquete + iva;
 
+        if(tiempoPaquete==3){
+            tiempoExtraCheckBox.setEnabled(true);
+        }
+
         String duracion = "";
         if (tiempoPaquete==1){
             duracion = tiempoPaquete + " mes";
@@ -59,6 +64,8 @@ public class calculaTotalResumen extends AppCompatActivity {
 
         tituloPaquetefinal.setText("¡Paquete listo!");
         resumenStringVista.setText(resumenString);
+
+        Toast.makeText(getApplicationContext(), "¡Cotización realizada satisfactoriamente!", Toast.LENGTH_LONG).show();
 
     }
     public void onClickCheckBox(View view){
@@ -100,15 +107,13 @@ public class calculaTotalResumen extends AppCompatActivity {
         }
         //finish afinaty
         resumenStringVista.setText(resumenString);
-
-
     }
-    public void msjAceptado(View view){
-
-        Button btnVistaPrincipal;
-
-        //agregar boton de ir a la principal.
-
-        Toast.makeText(getApplicationContext(), "El paquete fue seleccionado correctamente", Toast.LENGTH_SHORT).show();
+    public void otraCotizacion(View view){
+        Intent i = new Intent(this,MainActivity.class);
+        startActivity(i);
     }
+    public void finalizarApp(View view){
+        finishAffinity();
+    }
+
 }

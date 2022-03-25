@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     Spinner spinnerTiempo;
+    TextView titulo;
 
     float[] subPaquetesTiempoPrecios;
     float precioSeleccionado;
@@ -26,12 +28,15 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
         setContentView(R.layout.activity_sub_paquetes_tiempo);
 
         spinnerTiempo = (Spinner) findViewById(R.id.spinnerTiempo);
+        titulo = (TextView) findViewById(R.id.tituloSubPaqueteTiempo);
 
         Bundle datos = getIntent().getExtras();
 
         nombreCategoria = datos.getString("nombreCategoria");
         nombreSubPaquete = datos.getString("nombreSubPaquete");
         precioSubPaquete = datos.getInt("precioSubPaquete");
+
+        titulo.setText(nombreCategoria + " | " + nombreSubPaquete);
 
         subPaquetesTiempoPrecios = new float[3];
         subPaquetesTiempoPrecios[0] = (float) (precioSubPaquete * .25) + precioSubPaquete;
@@ -69,13 +74,14 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
     public void onNothingSelected(AdapterView<?> adapterView){
 
     }
-    /*public void eligeOtroPaquete(View view){
+    public void eligeOtroPaquete(View view){
         Intent i = new Intent(this,SubPaquetesControlador.class);
+        Bundle datos1 = getIntent().getExtras();
         i.putExtra("nombreCategoria",nombreCategoria);
-        i.putExtra("nombresSubPaquetes", nombresSubPaquetes);
-        i.putExtra("preciosSubPaquetes", preciosSubPaquetes);
+        i.putExtra("nombresSubPaquetes", datos1.getStringArray("nombresSubPaquetes"));
+        i.putExtra("preciosSubPaquetes", datos1.getIntArray("preciosSubPaquetes"));
         startActivity(i);
-    }*/
+    }
     public void continuaSubPaqueteTiempoSeleccionado(View view){
 
         Intent i = new Intent(this, calculaTotalResumen.class);

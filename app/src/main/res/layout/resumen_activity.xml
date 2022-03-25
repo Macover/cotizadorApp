@@ -51,29 +51,53 @@ sdgsdgs sdgsdg sdgsdg sdgsdg"
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingBottom="30dp"
-        android:layout_weight="1">
+        >
 
         <CheckBox
             android:id="@+id/paqueteCkB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:textColorHint="@color/primary"
-            android:textSize="15dp"
+            android:layout_weight="1"
+            android:enabled="false"
             android:onClick="onClickCheckBox"
-            android:text="Agregar 1 mes extra por $150."/>
+            android:text="Agregar 1 mes extra por $150."
+            android:textColorHint="@color/primary"
+            android:textSize="15dp" />
 
-        <Button
-            android:id="@+id/btnAceptarResumen"
-            style="@style/customButtonPrimary"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:onClick="msjAceptado"
-            android:text="Aceptar" />
+            android:layout_weight="3"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnOtraCotizacion"
+                style="@style/customButtonSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:onClick="otraCotizacion"
+                android:text="Hacer otra cotización" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnFinalizarApp"
+                style="@style/customButtonPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.5"
+                android:onClick="finalizarApp"
+                android:text="Salir" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
