@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if(currentDate.contains("26-03-2022")){
             promocionActiva = true;
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Parece que hoy es 25 de marzo y por ello, todos los paquetes estan al 25% de descuento.")
-                    .setTitle("¡Promocipon solo hoy!");
+            builder.setMessage("Parece que hoy es 26 de marzo y por ello, todos los paquetes estan al 25% de descuento.")
+                    .setTitle("¡Promoción solo hoy!");
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
