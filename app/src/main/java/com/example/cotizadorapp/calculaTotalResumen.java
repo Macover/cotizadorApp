@@ -8,7 +8,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class calculaTotalResumen extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class calculaTotalResumen extends AppCompatActivity {
 
     TextView tituloPaquetefinal, resumenStringVista;
     CheckBox tiempoExtraCheckBox;

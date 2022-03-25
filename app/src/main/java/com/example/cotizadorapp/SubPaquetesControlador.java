@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.w3c.dom.Text;
 
-public class SubPaquetesControlador extends Activity {
+public class SubPaquetesControlador extends AppCompatActivity {
 
     TextView tituloCategoria;
     RadioButton opcion1, opcion2, opcion3;
