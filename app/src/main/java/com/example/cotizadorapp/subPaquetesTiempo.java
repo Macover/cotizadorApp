@@ -11,16 +11,12 @@ import android.widget.Spinner;
 
 public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     Spinner spinnerTiempo;
-    String nombreCategoria;
 
-    String[] nombresSubPaquetes;
-    int[] preciosSubPaquetes;
     float[] subPaquetesTiempoPrecios;
-
-    String subPaqueteSeleccionado;
     float precioSeleccionado;
-    String tiempoPaquete;
+    int tiempoPaquete;
 
+    String nombreCategoria;
     String nombreSubPaquete;
     int precioSubPaquete;
 
@@ -32,10 +28,8 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
         spinnerTiempo = (Spinner) findViewById(R.id.spinnerTiempo);
 
         Bundle datos = getIntent().getExtras();
-        nombreCategoria = datos.getString("nombreCategoria");
-        nombresSubPaquetes = datos.getStringArray("nombresSubPaquetes");
-        preciosSubPaquetes = datos.getIntArray("preciosSubPaquetes");
 
+        nombreCategoria = datos.getString("nombreCategoria");
         nombreSubPaquete = datos.getString("nombreSubPaquete");
         precioSubPaquete = datos.getInt("precioSubPaquete");
 
@@ -51,46 +45,44 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paquetesTiempo);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTiempo.setAdapter(adapter);
-    }
-    public void eligeOtroPaquete(View view){
-        Intent i = new Intent(this,SubPaquetesControlador.class);
-        i.putExtra("nombreCategoria",nombreCategoria);
-        i.putExtra("nombresSubPaquetes", nombresSubPaquetes);
-        i.putExtra("preciosSubPaquetes", preciosSubPaquetes);
-        startActivity(i);
-    }
-    public void continuaSubPaqueteTiempoSeleccionado(View view){
+        spinnerTiempo.setOnItemSelectedListener(this);
 
-        Intent i = new Intent(this, calculaTotalResumen.class);
-        i.putExtra("nombreCategoria", nombreCategoria);
-        i.putExtra("nombreSubPaquete", subPaqueteSeleccionado);
-        i.putExtra("precioSubPaquete", precioSeleccionado);
-        i.putExtra("tiempoPaquete", tiempoPaquete);
-        startActivity(i);
     }
-
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         switch (pos){
             case 0:
-                tiempoPaquete = "1 mes";
-                subPaqueteSeleccionado = nombresSubPaquetes[0];
+                tiempoPaquete = 1;
                 precioSeleccionado = subPaquetesTiempoPrecios[0];
                 break;
             case 1:
-                tiempoPaquete = "2 meses";
-                subPaqueteSeleccionado = nombresSubPaquetes[1];
+                tiempoPaquete = 2;
                 precioSeleccionado = subPaquetesTiempoPrecios[1];
                 break;
             case 2:
-                tiempoPaquete = "3 meses";
-                subPaqueteSeleccionado = nombresSubPaquetes[2];
+                tiempoPaquete = 3;
                 precioSeleccionado = subPaquetesTiempoPrecios[2];
                 break;
         }
     }
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    public void onNothingSelected(AdapterView<?> adapterView){
 
+    }
+    /*public void eligeOtroPaquete(View view){
+        Intent i = new Intent(this,SubPaquetesControlador.class);
+        i.putExtra("nombreCategoria",nombreCategoria);
+        i.putExtra("nombresSubPaquetes", nombresSubPaquetes);
+        i.putExtra("preciosSubPaquetes", preciosSubPaquetes);
+        startActivity(i);
+    }*/
+    public void continuaSubPaqueteTiempoSeleccionado(View view){
+
+        Intent i = new Intent(this, calculaTotalResumen.class);
+        i.putExtra("nombreCategoria", nombreCategoria);
+        i.putExtra("nombreSubPaquete", nombreSubPaquete);
+        i.putExtra("precioSubPaquete", precioSeleccionado);
+        i.putExtra("tiempoPaquete", tiempoPaquete);
+        startActivity(i);
     }
 }

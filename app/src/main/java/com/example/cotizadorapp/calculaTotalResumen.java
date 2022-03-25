@@ -15,6 +15,11 @@ public class calculaTotalResumen extends Activity {
     String resumenString;
     float iva, total;
 
+    String nombreSubPaquete;
+    String nombreCategoria;
+    float precioSubPaquete;
+    int tiempoPaquete;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,18 +31,26 @@ public class calculaTotalResumen extends Activity {
 
         Bundle datos = getIntent().getExtras();
 
-        String nombreCategoria = datos.getString("nombreCategoria");
-        String nombreSubCategoria = datos.getString("nombreSubPaquete");
-        String tiempoPaquete = datos.getString("tiempoPaquete");
-        int precioSubPaquete = datos.getInt("precioSubPaquete");
+        nombreCategoria = datos.getString("nombreCategoria");
+        nombreSubPaquete = datos.getString("nombreSubPaquete");
+        precioSubPaquete = datos.getFloat("precioSubPaquete");
+        tiempoPaquete = datos.getInt("tiempoPaquete");
+
 
         iva = (float) (precioSubPaquete * 0.16);
         total = precioSubPaquete + iva;
 
+        String duracion = "";
+        if (tiempoPaquete==1){
+            duracion = tiempoPaquete + " mes";
+        }else{
+            duracion = tiempoPaquete + " meses";
+        }
+
         resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
-                "Nombre del paquete seleccionado: " + nombreSubCategoria+ "\n"+
+                "Nombre del paquete seleccionado: " + nombreSubPaquete+ "\n"+
                 "Precio del paquete: $"+precioSubPaquete+ "\n"+
-                "Duración: "+tiempoPaquete+ "\n"+
+                "Duración: "+duracion+"\n"+
                 "IVA: $"+iva+ "\n"+
                 "Total: $"+total;
 
@@ -48,26 +61,38 @@ public class calculaTotalResumen extends Activity {
     }
     public void onClickCheckBox(View view){
 
-        Bundle datos = getIntent().getExtras();
-        String nombreCategoria = datos.getString("nombreCategoria");
-        String nombreSubCategoria = datos.getString("nombreSubPaquete");
-        int precioSubPaquete = datos.getInt("precioSubPaquete");
-
         iva = (float) (precioSubPaquete * 0.16);
         total = precioSubPaquete + iva;
 
+        String duracion = "";
+
         if(tiempoExtraCheckBox.isChecked()){
-            total+= 150;
+            iva = (float) ((precioSubPaquete + 150)* 0.16);
+            total = precioSubPaquete+150 + iva;
+            tiempoPaquete++;
+            if (tiempoPaquete==1){
+                duracion = tiempoPaquete + " mes";
+            }else{
+                duracion = tiempoPaquete + " meses";
+            }
             resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
-                    "Nombre del paquete seleccionado: " + nombreSubCategoria+ "\n"+
+                    "Nombre del paquete seleccionado: " + nombreSubPaquete+ "\n"+
                     "Precio del paquete: $"+precioSubPaquete+ "\n"+
+                    "Duración: "+duracion+"\n"+
+                    "1 mes extra: $150"+ "\n"+
                     "IVA: $"+iva+ "\n"+
-                    "Extra: $150"+ "\n"+
                     "Total: $"+total;
         }else{
+            tiempoPaquete--;
+            if (tiempoPaquete==1){
+                duracion = tiempoPaquete + " mes";
+            }else{
+                duracion = tiempoPaquete + " meses";
+            }
             resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
-                    "Nombre del paquete seleccionado: " + nombreSubCategoria+ "\n"+
+                    "Nombre del paquete seleccionado: " + nombreSubPaquete+ "\n"+
                     "Precio del paquete: $"+precioSubPaquete+ "\n"+
+                    "Duración: "+duracion+"\n"+
                     "IVA: $"+iva+ "\n"+
                     "Total: $"+total;
         }

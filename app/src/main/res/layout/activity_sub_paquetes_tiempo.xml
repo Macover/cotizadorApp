@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingRight="30dp"
+    android:paddingLeft="30dp"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".subPaquetesTiempo">
@@ -52,11 +54,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:onClick="eligeOtroPaquete"
+            android:layout_weight="1"
             android:text="Elegir otro paquete" />
 
         <Space
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="wrap_content" />
 
         <Button
@@ -65,7 +67,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:onClick="continuaSubPaqueteTiempoSeleccionado"
-            android:text="Continuar" />
+            android:text="→" />
     </LinearLayout>
 </LinearLayout>
