@@ -22,6 +22,7 @@ public class calculaTotalResumen extends AppCompatActivity {
     String nombreCategoria;
     float precioSubPaquete;
     int tiempoPaquete;
+    boolean promocionActiva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class calculaTotalResumen extends AppCompatActivity {
         nombreSubPaquete = datos.getString("nombreSubPaquete");
         precioSubPaquete = datos.getFloat("precioSubPaquete");
         tiempoPaquete = datos.getInt("tiempoPaquete");
+        promocionActiva = datos.getBoolean("promocion");
 
 
         iva = (float) (precioSubPaquete * 0.16);
@@ -54,13 +56,28 @@ public class calculaTotalResumen extends AppCompatActivity {
             duracion = tiempoPaquete + " meses";
         }
 
-        resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
-                "Nombre del paquete seleccionado: " + nombreSubPaquete+ "\n"+
-                "Precio del paquete: $"+precioSubPaquete+ "\n"+
-                "Duración: "+duracion+"\n"+
-                "IVA: $"+iva+ "\n"+
-                "Total: $"+total;
+        if(promocionActiva){
 
+            float precioNuevoPaquete = (float) (precioSubPaquete - (precioSubPaquete * 0.25));
+            iva = (float) (precioNuevoPaquete * 0.16);
+            total = iva + precioNuevoPaquete;
+
+            resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
+                    "Nombre del paquete seleccionado: " + nombreSubPaquete+ "\n"+
+                    "Precio del paquete: $"+precioSubPaquete+ "\n"+
+                    "Descuento: 25%"+ "\n"+
+                    "Nuevo precio del paquete: $"+precioNuevoPaquete+ "\n"+
+                    "Duración: "+duracion+"\n"+
+                    "IVA: $"+iva+ "\n"+
+                    "Total: $"+total;
+        }else{
+            resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
+                    "Nombre del paquete seleccionado: " + nombreSubPaquete+ "\n"+
+                    "Precio del paquete: $"+precioSubPaquete+ "\n"+
+                    "Duración: "+duracion+"\n"+
+                    "IVA: $"+iva+ "\n"+
+                    "Total: $"+total;
+        }
 
         tituloPaquetefinal.setText("¡Paquete listo!");
         resumenStringVista.setText(resumenString);
@@ -75,7 +92,9 @@ public class calculaTotalResumen extends AppCompatActivity {
 
         String duracion = "";
 
-        if(tiempoExtraCheckBox.isChecked()){
+
+
+        if(tiempoExtraCheckBox.isChecked() && !promocionActiva){
             iva = (float) ((precioSubPaquete + 150)* 0.16);
             total = precioSubPaquete+150 + iva;
             tiempoPaquete++;
@@ -91,7 +110,46 @@ public class calculaTotalResumen extends AppCompatActivity {
                     "1 mes extra: $150"+ "\n"+
                     "IVA: $"+iva+ "\n"+
                     "Total: $"+total;
-        }else{
+        }else if(tiempoExtraCheckBox.isChecked() && promocionActiva){
+            float nuuevoPrecioSubPaquete =  (float) (precioSubPaquete - (precioSubPaquete * 0.25));
+            float subTotal = nuuevoPrecioSubPaquete + 150;
+            iva = (float) (subTotal* 0.16);
+            total = precioSubPaquete+150 + iva;
+            tiempoPaquete++;
+            if (tiempoPaquete==1){
+                duracion = tiempoPaquete + " mes";
+            }else{
+                duracion = tiempoPaquete + " meses";
+            }
+            resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
+                    "Nombre del paquete seleccionado: " + nombreSubPaquete+ "\n"+
+                    "Precio del paquete: $"+precioSubPaquete+ "\n"+
+                    "Descuento: 25%"+ "\n"+
+                    "Duración: "+duracion+"\n"+
+                    "Nuevo precio del paquete: $"+nuuevoPrecioSubPaquete+ "\n"+
+                    "1 mes extra: $150"+ "\n"+
+                    "Sub total: "+subTotal+"\n"+
+                    "IVA: $"+iva+ "\n"+
+                    "Total: $"+total;
+        }else if(!tiempoExtraCheckBox.isChecked() && promocionActiva){
+            float precioNuevoPaquete = (float) (precioSubPaquete - (precioSubPaquete * 0.25));
+            iva = (float) (precioNuevoPaquete * 0.16);
+            total = iva + precioNuevoPaquete;
+            tiempoPaquete--;
+            if (tiempoPaquete==1){
+                duracion = tiempoPaquete + " mes";
+            }else{
+                duracion = tiempoPaquete + " meses";
+            }
+            resumenString = "Usted ah seleccionado la categoria de: " + nombreCategoria + "\n"+
+                    "Nombre del paquete seleccionado: " + nombreSubPaquete+ "\n"+
+                    "Precio del paquete: $"+precioSubPaquete+ "\n"+
+                    "Descuento: 25%"+ "\n"+
+                    "Nuevo precio del paquete: $"+precioNuevoPaquete+ "\n"+
+                    "Duración: "+duracion+"\n"+
+                    "IVA: $"+iva+ "\n"+
+                    "Total: $"+total;
+        } else{
             tiempoPaquete--;
             if (tiempoPaquete==1){
                 duracion = tiempoPaquete + " mes";

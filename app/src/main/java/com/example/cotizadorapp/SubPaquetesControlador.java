@@ -19,6 +19,7 @@ public class SubPaquetesControlador extends AppCompatActivity {
     String nombreCategoria;
     String[] nombresSubPaquetes;
     int[] preciosSubPaquetes;
+    boolean promocionActiva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class SubPaquetesControlador extends AppCompatActivity {
         nombreCategoria = datos.getString("nombreCategoria");
         nombresSubPaquetes = datos.getStringArray("nombresSubPaquetes");
         preciosSubPaquetes = datos.getIntArray("preciosSubPaquetes");
+        promocionActiva = datos.getBoolean("promocion");
 
         tituloCategoria = (TextView) findViewById(R.id.txtNombreCategoria);
 
@@ -50,6 +52,7 @@ public class SubPaquetesControlador extends AppCompatActivity {
 
         Intent i = new Intent(this, subPaquetesTiempo.class);
         i.putExtra("nombreCategoria", this.nombreCategoria);
+        i.putExtra("promocion", this.promocionActiva);
 
         if(opcion1.isChecked()){
             i.putExtra("nombreSubPaquete", nombresSubPaquetes[0]);

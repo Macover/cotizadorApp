@@ -21,6 +21,7 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
     String nombreCategoria;
     String nombreSubPaquete;
     int precioSubPaquete;
+    boolean promocionActiva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
         nombreCategoria = datos.getString("nombreCategoria");
         nombreSubPaquete = datos.getString("nombreSubPaquete");
         precioSubPaquete = datos.getInt("precioSubPaquete");
+        promocionActiva = datos.getBoolean("promocion");
 
         titulo.setText(nombreCategoria + " | " + nombreSubPaquete);
 
@@ -78,6 +80,7 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
         Intent i = new Intent(this,SubPaquetesControlador.class);
         Bundle datos1 = getIntent().getExtras();
         i.putExtra("nombreCategoria",nombreCategoria);
+        i.putExtra("promocion",promocionActiva);
         i.putExtra("nombresSubPaquetes", datos1.getStringArray("nombresSubPaquetes"));
         i.putExtra("preciosSubPaquetes", datos1.getIntArray("preciosSubPaquetes"));
         startActivity(i);
@@ -86,6 +89,7 @@ public class subPaquetesTiempo extends AppCompatActivity implements AdapterView.
 
         Intent i = new Intent(this, calculaTotalResumen.class);
         i.putExtra("nombreCategoria", nombreCategoria);
+        i.putExtra("promocion",promocionActiva);
         i.putExtra("nombreSubPaquete", nombreSubPaquete);
         i.putExtra("precioSubPaquete", precioSeleccionado);
         i.putExtra("tiempoPaquete", tiempoPaquete);
